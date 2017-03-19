@@ -408,12 +408,12 @@
 .owf-951-n:before {
   content: "\F168";
 }
-/*  few clouds   */
-.owf-801:before,
-.owf-801-d:before {
+/*  few clouds (was 801)  */
+.owf-1003:before,
+.owf-1003-d:before {
   content: "\ED81";
 }
-.owf-801-n:before {
+.owf-1003-n:before {
   content: "\F169";
 }
 /* scattered clouds */
