@@ -5,7 +5,7 @@ $(document).ready(function() {
 	$.getJSON(ipurl, function(locate) {
 		document.getElementById("demo").innerHTML = locate.city;
 		// get lat/long from ip location array
-		var url = 'https://api.apixu.com/v1/current.json?key=##################&q=' + locate.latitude + ',' + locate.longitude;
+		var url = 'https://api.apixu.com/v1/current.json?key=053480a560f4447daae235921171803&q=' + locate.latitude + ',' + locate.longitude;
 
 		$.getJSON(url, function(data) {
 			// get required data from APIUX.com's location array for further manipulation
@@ -27,7 +27,7 @@ $(document).ready(function() {
 
 			};
 			// output required data to html page
-			document.getElementById("weathericon").className = "owf owf-5x owf-pull-left owf-border owf-" + darkOutside(code);
+			document.getElementById("weathericon").className = "owf owf-3x owf-" + darkOutside(code);
 			document.getElementById("weather").innerHTML = data.current.condition.text;
 			document.getElementById("temp").innerHTML = data.current.temp_c + "&#176;C";
 			document.getElementById("feels").innerHTML = data.current.feelslike_c + "&#176;C";
