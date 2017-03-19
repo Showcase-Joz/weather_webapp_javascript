@@ -208,10 +208,10 @@
 
 /*   Rain - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
 
-/* light rain  */
-.owf-500:before,
-.owf-500-d:before,
-.owf-500-n:before {
+/* light rain (was 500) */
+.owf-1183:before,
+.owf-1183-d:before,
+.owf-1183-n:before {
   content: "\EC54";
 }
 /* moderate rain  */
