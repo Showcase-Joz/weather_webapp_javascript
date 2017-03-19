@@ -1,35 +1,41 @@
-$( document ).ready(function() {
-    var ipurl = "https://freegeoip.net/json/";
-    $.getJSON( ipurl,function(locate){
-      document.getElementById("demo").innerHTML = "<b>" + locate.city + "</b>";
+$(document).ready(function() {
 
-        var url = 'http://api.openweathermap.org/data/2.5/weather?&lat=' + locate.latitude + '&lon=' + locate.longitude + '&units=imperial&APPID=a5b84f49b6412d3c42bb6f8a8a3cbef8';
+	// get IP from provider
+	var ipurl = "https://freegeoip.net/json/";
+	$.getJSON(ipurl, function(locate) {
+		document.getElementById("demo").innerHTML = locate.city;
+		// get lat/long from ip location array
+		var url = 'https://api.apixu.com/v1/current.json?key=##################&q=' + locate.latitude + ',' + locate.longitude;
 
-         $.getJSON( url, function (data){
+		$.getJSON(url, function(data) {
+			// get required data from APIUX.com's location array for further manipulation
+			var code = data.current.is_day;
 
-            var code = data.weather[0].id;
-            var hr = (new Date()).getHours();
+			console.log(data);
+			console.log(code);
+			// use 'data.current.is_day' to determine day/night
+			var darkOutside = function nightOrDay(condition) {
+				if (data.current.is_day === 0) {
+					// convey 'night'
+					day_part = "night"
+						// add '-n' to the end of the weather icon code data
+					return data.current.condition.code + "-n"
+				} else {
+					day_part = "day"
+					return data.current.condition.code + "-d"
+				}
 
-                  console.log(data);
-                  console.log(code);
-
-            var darkOutside = function nightOrDay(condition){
-            if (hr > 18){
-              return condition + "-n";
-            }
-            else if (hr < 7) {
-              return condition + "-n";
-            }
-            else{
-            return condition + "-d";
-            }
-          };
+			};
+			// output required data to html page
+			document.getElementById("weathericon").className = "owf owf-5x owf-pull-left owf-border owf-" + darkOutside(code);
+			document.getElementById("weather").innerHTML = data.current.condition.text;
+			document.getElementById("temp").innerHTML = data.current.temp_c + "&#176;C";
+			document.getElementById("feels").innerHTML = data.current.feelslike_c + "&#176;C";
+			document.getElementById("day_part").innerHTML = day_part;
+			// OPTIONAL use of inbuilt icons from APIUX.com
+			document.getElementById("icon").innerHTML = "<img src='https://" + data.current.condition.icon + "'/>";
 
 
-           document.getElementById("weathericon").className = "owf owf-" + darkOutside(code);
-           document.getElementById("weather").innerHTML = data.weather[0].main;
-           document.getElementById("temp").innerHTML = data.main.temp + "&#176;";
-
-         });
-     });
-   });
+		});
+	});
+ });
