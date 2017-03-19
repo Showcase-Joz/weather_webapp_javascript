@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="css/style-1.css">
+  <link href="owfont-master/css/owfont-regular.css" rel="stylesheet" type="text/css">
+  <!-- material design lite stuff next three lines -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+  <!-- theme -->
+  <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.green-purple.min.css" />
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+  <script src='https://code.getmdl.io/1.1.3/material.min.js'></script>
+  <script src="js/index.js"></script>
+</head>
+
+<body>
+  <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+    <div id="titleblock">
+      <p id="toptitle"><b>weather</b>buddy</p>
+      <p id="subtitle">a fair weather friend</p>
+    </div>
+    <div id="cardcontents" class="mdl-card__supporting-text">
+      <center>
+        <i id="weathericon" class="owf owf-800"></i>
+        <span id="icon"></span>
+        <p>To<span id="day_part"></span> is 
+          <span id="weather">Loading</span></p>
+
+        <br>
+        <p><span id="temp"></span> <em>(Feeling like:<span id="feels"></span>)</em></p>
+
+        <p>in
+          <strong id="demo">Loading</strong>
+        </p>
+    </div>
+    </center>
+  </div>
+
+    
+</body>
+
+</html>
